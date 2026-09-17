@@ -1,0 +1,23 @@
+Stage 1
+Hardcoded players
+Hardcoded team/position
+Hardcoded projected points
+
+Stage 2
+Hardcoded player list
+Real team/position/status from API
+
+Stage 3
+Real player stats from API
+
+Stage 4
+Weekly fantasy-related stats
+
+Stage 5
+PostgreSQL remembers your saved roster
+
+Stage 6
+ESPN/Sleeper import
+
+Stage 7
+AI features
