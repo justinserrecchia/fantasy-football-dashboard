@@ -1,11 +1,13 @@
 import PlayerSection from "../components/PlayerSection";
-import { players } from "../data/players";
 import { Player } from "../types/Player";
 import { fetchPlayerData, getRosterPlayers } from "../lib/sleeper";
+import { getRosterIds } from "../lib/roster";
 
 export default async function Home() {
   const playerData = await fetchPlayerData();
-  const myRoster = getRosterPlayers(playerData, players.map(player => player.sleeperId));
+  const rosterIds = await getRosterIds();
+  console.log("Roster IDs:", rosterIds);
+  const myRoster = getRosterPlayers(playerData, rosterIds);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
