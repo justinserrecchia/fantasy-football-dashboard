@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fantasy Football Dashboard
 
-## Getting Started
+A personal fantasy football dashboard built with Next.js that displays players from my fantasy roster using live NFL player data.
 
-First, run the development server:
+## Features
+
+- Displays fantasy roster players by position
+- Fetches real player information from the Sleeper API
+- Shows player team, position, experience, and injury status
+- Links to team depth charts
+- Stores fantasy roster player IDs in PostgreSQL
+- Uses reusable React components for player cards and position sections
+
+## Tech Stack
+
+- Next.js
+- TypeScript
+- React
+- Tailwind CSS
+- PostgreSQL
+- Sleeper API
+- Git / GitHub
+
+## How It Works
+
+The application stores the Sleeper IDs of players on my fantasy roster in PostgreSQL.
+
+Next.js retrieves those IDs from the database and uses them to find player information from the Sleeper API.
+
+The returned data is converted into the application's Player model and displayed through React components.
+
+Basic data flow:
+
+PostgreSQL  
+→ Roster Player IDs  
+→ Sleeper API  
+→ Player Data  
+→ React Components  
+→ Fantasy Dashboard
+
+## Project Structure
+
+```text
+app/
+  page.tsx
+
+components/
+  PlayerCard.tsx
+  PlayerSection.tsx
+  abbrToTeam.tsx
+
+lib/
+  db.ts
+  roster.ts
+  sleeper.ts
+
+types/
+  Player.ts
+```
+
+## Running Locally
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env.local` file with your PostgreSQL connection information.
+
+Example:
+
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=fantasy_dashboard
+DB_USER=postgres
+DB_PASSWORD=your_password
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Future Improvements
 
-## Learn More
+- Weekly NFL matchups
+- Fantasy statistics and projections
+- Starting lineup selection
+- Add/remove players through the dashboard
+- Improved responsive design
+- Player news and matchup information
+- AI-assisted fantasy recommendations
 
-To learn more about Next.js, take a look at the following resources:
+## Status
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is currently in active development.
