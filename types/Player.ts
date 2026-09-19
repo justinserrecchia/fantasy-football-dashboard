@@ -6,4 +6,6 @@ export interface Player {
     rookieYear: string;
     yearsExperience: number;
     injuryStatus: string;
+    teamDepthChart: string;
+    isStarting: boolean;
 }
