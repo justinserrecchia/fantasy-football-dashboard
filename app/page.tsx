@@ -4,14 +4,21 @@ import { fetchPlayerData, getRosterPlayers } from "../lib/sleeper";
 import { getRosterIds } from "../lib/roster";
 
 export default async function Home() {
-  const playerData = await fetchPlayerData();
+  const sleeperResponse = await fetchPlayerData();
+  const playerData = sleeperResponse.data;
+  const lastUpdated = sleeperResponse.lastUpdated;
   const rosterIds = await getRosterIds();
   console.log("Roster IDs:", rosterIds);
   const myRoster = getRosterPlayers(playerData, rosterIds);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="relative flex min-h-screen flex-col items-center justify-between p-24 bg-[#A3B18A]">
       <h1 className="text-4xl font-bold">Fantasy Football Dashboard</h1>
+      <p className="absolute top-4 right-6 text-xs text-gray-600">
+        Last Updated: {lastUpdated
+        ? new Date(lastUpdated).toLocaleString()
+        : "Unknown"}
+      </p>
       <PlayerList myRoster={myRoster}/>
     </main>
   );
